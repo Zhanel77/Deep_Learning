@@ -1,24 +1,25 @@
 # Core
-python>=3.10
-torch>=2.1.0
-torchvision>=0.16.0
+torch
+torchvision
 
 # Data & utils
-numpy>=1.24
-tqdm>=4.66
-pyyaml>=6.0
+numpy
+pandas
+tqdm
+pyyaml
+pillow
 
 # Visualization
-matplotlib>=3.8
-seaborn>=0.13
+matplotlib
 
-# Metrics (FID / Inception Score)
-scipy>=1.11
-scikit-learn>=1.3
+# Metrics helpers
+scipy
+scikit-learn
 
-# Google Drive download for CelebA
-gdown>=4.7
+# Download
+gdown
+kaggle
 
-# Jupyter (analysis & demo)
-jupyter>=1.0
-ipykernel>=6.29
+# Jupyter
+jupyter
+ipykernel
