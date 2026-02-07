@@ -52,6 +52,7 @@ def save_samples(G, attrs_fixed, out_path, z_dim, device):
 
 def main():
     parser = argparse.ArgumentParser()
+    parser.add_argument("--resume", type=str, default=None)
     parser.add_argument("--data_dir", type=str, default="./data")
     parser.add_argument("--epochs", type=int, default=10)
     parser.add_argument("--batch_size", type=int, default=128)
@@ -92,7 +93,18 @@ def main():
     attrs_fixed = ab[:32]  # 32 сэмпла
     best_g = 1e9
 
-    for epoch in range(1, args.epochs + 1):
+
+    start_epoch = 1
+
+    if args.resume is not None and os.path.exists(args.resume):
+        ckpt = torch.load(args.resume, map_location=device)
+        G.load_state_dict(ckpt["G"])
+        D.load_state_dict(ckpt["D"])
+        print(f"✅ Resumed weights from: {args.resume}")
+
+        start_epoch = 7
+
+    for epoch in range(start_epoch, args.epochs + 1):
         G.train()
         D.train()
 
